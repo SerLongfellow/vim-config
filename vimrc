@@ -1,18 +1,39 @@
 
+"----- Initial config ---------------------------------------------------
 set nocompatible
-syntax on
 
-filetype plugin indent on
-" show existing tab with 4 spaces width
 set tabstop=4
-" when indenting with '>', use 4 spaces width
 set shiftwidth=4
-" On pressing tab, insert 4 spaces
 set expandtab
 
 set hidden
 
-execute pathogen#infect()
+"------------------------------------------------------------------------
+
+"----- Plugin initialization --------------------------------------------
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'scrooloose/nerdtree'
+Plug 'moll/vim-bbye'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-ruby/vim-ruby'
+Plug 'w0rp/ale'
+Plug 'autozimu/languageclient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
+call plug#end()
+
+"------------------------------------------------------------------------
 
 if has("autocmd")
     augroup templates
@@ -28,7 +49,7 @@ let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 
-" Enable shortcuts to close and switch between buffers
+"---------- Enable shortcuts to close and switch between buffers ----------
 :nnoremap <Leader>q :Bdelete<CR>
 :nnoremap <Leader>n :bn<CR>
 :nnoremap <Leader>p :bp<CR>
