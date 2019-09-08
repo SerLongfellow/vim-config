@@ -33,12 +33,35 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 :nnoremap <Leader>n :bn<CR>
 :nnoremap <Leader>p :bp<CR>
 
-" Enable ALE plugin
+"----------- Enable ALE plugin and set configs ----------------------------
 let g:airline#extensions#ale#enabled = 1
 
-let g:ale_linters = {'ruby': ['standardrb']}
+let g:ale_linters = {'ruby': ['standardrb', 'solargraph']}
 let g:ale_fixers = {'ruby': ['standardrb']}
 let g:ale_lint_delay = 75
+let g:ale_sign_column_always = 1
 
 highlight ALEError ctermbg=DarkRed
 highlight ALEWarning ctermbg=none cterm=underline
+
+:nnoremap <Leader>f :ALEFix<CR>
+
+"--------------------------------------------------------------------------
+
+"------------- LanguageClient-neovim config for IDE-type features ---------
+let g:LanguageClient_autoStart         = 1
+let g:LanguageClient_diagnosticsEnable = 0
+let g:LanguageClient_serverCommands = {
+    \ 'ruby': ['solargraph', 'stdio']
+    \ }
+
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> gi :call LanguageClient_textDocument_implemenation()<CR>
+nnoremap <silent> gc :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> gr :call LanguageClient_textDocument_references()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+"--------------------------------------------------------------------------
+
+let g:deoplete#enable_at_startup = 1
+
