@@ -56,10 +56,12 @@ let g:LanguageClient_serverCommands = {
     \ }
 
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <Leader>k :pclose<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> gi :call LanguageClient_textDocument_implemenation()<CR>
+nnoremap <silent> gi :call LanguageClient_textDocument_implementation()<CR>
 nnoremap <silent> gc :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> gr :call LanguageClient_textDocument_references()<CR>
+nnoremap <Leader>r :lclose<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 "--------------------------------------------------------------------------
 
