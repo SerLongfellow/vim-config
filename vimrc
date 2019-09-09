@@ -30,6 +30,9 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+Plug 'Shougo/echodoc.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -86,5 +89,13 @@ nnoremap <Leader>r :lclose<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 "--------------------------------------------------------------------------
 
+set cmdheight=2
+let g:echodoc_enable_at_startup = 1
+let g:echodoc#type = 'signature'
+
 let g:deoplete#enable_at_startup = 1
+" Only use langeclient completion souce
+call deoplete#custom#option('sources', {
+\ '_': ['LanguageClient', 'file', 'member', 'buffer'],
+\})
 
