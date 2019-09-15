@@ -5,25 +5,23 @@
     mkdir ~/.vim
     cd ~/.vim && git clone https://github.com/SerLongfellow/vim-config .
     ```
-1. Point bash to this projects `vimrc` (or source this `vimrc` from the default `~/.vimrc`) in `~/.bashrc`
+1. Make sure that your neovim `.config/nvim/init.vim' file is `source`ing this `vimrc` and adding `~/.vim/` to its runpath
     ```
     ...
-    export MYVIMRC="~/.vim/vimrc"
+    set runtimepath^=~/.vim runtimepath+=~/.vim/after
+    let &packpath = &runtimepath
+    source ~/.vim/vimrc
     ...
     ```
 1. Install plugins from vim with the `:PlugInstall` command
+1. Install all coc.nvim plugins from within neovim
+    ```
+    :CocInstall coc-json coc-tsserver coc-html coc-css coc-solargraph coc-yaml coc-python coc-git
+    ```
 
 ## Dependencies
 All linters, fixers, and language servers referenced in the vimrc file will need to be installed as well.
 ```
 gem install solargraph
-gem install standardrb
-```
-
-## Troubleshooting
-### vim-hug-neovim-rpc - No module 'neovim'
-Ran into this installing a fresh config on my Mac. To solve just install the pynvim module with pip.
-```
-pip3 install pynvim
 ```
 
