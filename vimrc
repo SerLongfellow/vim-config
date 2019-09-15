@@ -109,8 +109,10 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " Enable the list of buffers
 let g:airline#extensions#coc#enabled = 1
 
-"---------- Enable shortcuts to close and switch between buffers ----------
+" Enable shortcuts to close and switch between buffers
 :nnoremap <Leader>q :Bdelete<CR>
 :nnoremap <Leader>n :bn<CR>
 :nnoremap <Leader>p :bp<CR>
 
+" Add shortcut to show git blame info
+:nnoremap <silent> gb :echo b:coc_git_blame<CR>

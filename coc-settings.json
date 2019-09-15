@@ -7,5 +7,6 @@
     "solargraph.definitions": true,
     "solargraph.autoformat": false,
     "solargraph.folding": true,
-    "coc.source.buffer.enable": false
+    "coc.source.buffer.enable": false,
+    "git.addGlameToBufferVar": true
 }
