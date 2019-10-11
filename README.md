@@ -18,6 +18,10 @@
     ```
     :CocInstall coc-json coc-tsserver coc-html coc-css coc-solargraph coc-yaml coc-python coc-git
     ```
+1. Symlink the `~/.config/nvim/coc-settings.json` to this repo's `coc-settings.json`
+    ```
+    ln -s ~/.vim/coc-settings.json ~/.config/nvim/coc-settings.json 
+    ```
 
 ## Dependencies
 All linters, fixers, and language servers referenced in the vimrc file will need to be installed as well.
